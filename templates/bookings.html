@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='booking.css') }}">
+</head>
+<body>
+    <h1>Bookings</h1>
+    <ul id="booking-list">
+        {% for booking in bookings %}
+            <li>Job ID: {{ booking.job_id }}, Scheduled Time: {{ booking.scheduled_time }}</li>
+        {% endfor %}
+    </ul>
+    <script src="{{ url_for('static', filename='booking.js') }}"></script>
+</body>
+</html>

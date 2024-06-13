@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Payments{% endblock %}
+{% block content %}
+    <h1>Payments</h1>
+    <ul>
+        {% for payment in payments %}
+            <li><a href="{{ url_for('payment', payment_id=payment.id) }}">{{ payment.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

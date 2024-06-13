@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Worker Dashboard - WorkPal{% endblock %}
+
+{% block content %}
+    <div class="dashboard">
+        <h2>Worker Dashboard</h2>
+        <h3>My Appointments</h3>
+        {% if worker.assignments %}
+            <ul>
+                {% for assignment in worker.assignments %}
+                    <li>{{ assignment.client.first_name }} {{ assignment.client.last_name }} - {{ assignment.date }} at {{ assignment.time }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No appointments scheduled yet.</p>
+        {% endif %}
+        <a href="/availability" class="btn btn-primary">Update Availability</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Worker Profile - WorkPal{% endblock %}
+
+{% block content %}
+    <div class="profile">
+        <h2>Worker Profile</h2>
+        <h3>Personal Information</h3>
+        <p><strong>First Name:</strong> {{ worker.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ worker.last_name }}</p>
+        <p><strong>Email:</strong> {{ worker.email }}</p>
+        <h3>Services Offered</h3>
+        <ul>
+            {% for service in worker.services %}
+                <li>{{ service }}</li>
+            {% endfor %}
+        </ul>
+        <h3>Availability</h3>
+        <p>{{ worker.availability }}</p>
+    </div>
+{% endblock %}

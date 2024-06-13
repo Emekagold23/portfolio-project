@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Client Profile - WorkPal{% endblock %}
+
+{% block content %}
+    <div class="profile">
+        <h2>Client Profile</h2>
+        <h3>Personal Information</h3>
+        <p><strong>First Name:</strong> {{ client.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ client.last_name }}</p>
+        <p><strong>Email:</strong> {{ client.email }}</p>
+        <h3>Appointments</h3>
+        {% if appointments %}
+            <ul>
+                {% for appointment in appointments %}
+                    <li>{{ appointment.worker_name }} - {{ appointment.date }} at {{ appointment.time }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No appointments scheduled yet.</p>
+        {% endif %}
+    </div>
+{% endblock %}

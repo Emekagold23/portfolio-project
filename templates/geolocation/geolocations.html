@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Geolocations{% endblock %}
+{% block content %}
+    <h1>Geolocations</h1>
+    <ul>
+        {% for geolocation in geolocations %}
+            <li><a href="{{ url_for('geolocation', geolocation_id=geolocation.id) }}">{{ geolocation.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

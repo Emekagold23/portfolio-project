@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Client Dashboard - WorkPal{% endblock %}
+
+{% block content %}
+    <div class="dashboard">
+        <h2>Client Dashboard</h2>
+        <h3>Upcoming Appointments</h3>
+        {% if client.bookings %}
+            <ul>
+                {% for booking in client.bookings %}
+                    <li>{{ booking.worker.first_name }} {{ booking.worker.last_name }} - {{ booking.date }} at {{ booking.time }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No upcoming appointments.</p>
+        {% endif %}
+        <a href="/book-appointment" class="btn btn-primary">Book Appointment</a>
+    </div>
+{% endblock %}
