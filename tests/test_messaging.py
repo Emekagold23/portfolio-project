@@ -1,5 +1,5 @@
 import pytest
-from app.messaging import send_message, get_conversation, list_user_conversations
+from models.message import send_message, get_conversation, list_user_conversations
 from unittest.mock import patch, MagicMock
 
 # Sample data for testing
@@ -34,7 +34,7 @@ class MockMessagingService:
         return {"status": "success", "conversations": user_conversations}
 
 # Patch the messaging service in the messaging module
-@patch('app.messaging.MessagingService', new=MockMessagingService)
+@patch('models.message.MessagingService', new=MockMessagingService)
 def test_send_message():
     result = send_message(message_data["sender_id"], message_data["recipient_id"], message_data["content"])
     assert result["status"] == "success"
@@ -42,13 +42,13 @@ def test_send_message():
     assert result["message"]["recipient_id"] == message_data["recipient_id"]
     assert result["message"]["content"] == message_data["content"]
 
-@patch('app.messaging.MessagingService', new=MockMessagingService)
+@patch('models.message.MessagingService', new=MockMessagingService)
 def test_get_conversation():
     result = get_conversation(conversation_data["user1_id"], conversation_data["user2_id"])
     assert result["status"] == "success"
     assert result["conversation"] == conversation_data
 
-@patch('app.messaging.MessagingService', new=MockMessagingService)
+@patch('models.message.MessagingService', new=MockMessagingService)
 def test_list_user_conversations():
     result = list_user_conversations(user_conversations[0]["user_id"])
     assert result["status"] == "success"

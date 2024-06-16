@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, IntegerField, SelectField, HiddenField, DateTimeField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from models import User, Job
+from models import User
 from flask_login import current_user
 
 class RegistrationForm(FlaskForm):
@@ -67,7 +67,6 @@ class ContactForm(FlaskForm):
     message = TextAreaField('Message', validators=[DataRequired(), Length(min=10)])
     submit = SubmitField('Send Message')
 
-# Admin management forms
 class AdminUserForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired(), Length(min=2, max=30)])
     last_name = StringField('Last Name', validators=[DataRequired(), Length(min=2, max=30)])

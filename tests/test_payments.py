@@ -1,13 +1,13 @@
 import pytest
-from app.payments import process_payment, verify_payment, refund_payment
+from models.payments import process_payment, verify_payment, refund_payment
 from unittest.mock import patch, MagicMock
 
 # Sample data for testing
 payment_data = {
     "user_id": 1,
     "amount": 100.00,
-    "currency": "USD",
-    "payment_method": "credit_card",
+    "currency": "NGN",
+    "payment_method": "debit_card",
     "payment_details": {
         "card_number": "4111111111111111",
         "expiry_date": "12/24",
@@ -37,19 +37,19 @@ class MockPaymentGateway:
         return {"status": "success", "payment_id": payment_id, "amount": amount}
 
 # Patch the payment gateway in the payment module
-@patch('app.payments.PaymentGateway', new=MockPaymentGateway)
+@patch('models.payments.PaymentGateway', new=MockPaymentGateway)
 def test_process_payment():
     result = process_payment(payment_data["user_id"], payment_data["amount"], payment_data["currency"], payment_data["payment_method"], payment_data["payment_details"])
     assert result["status"] == "success"
     assert result["payment_id"] == "payment123"
 
-@patch('app.payments.PaymentGateway', new=MockPaymentGateway)
+@patch('models.payments.PaymentGateway', new=MockPaymentGateway)
 def test_verify_payment():
     result = verify_payment(payment_verification_data["payment_id"])
     assert result["status"] == "success"
     assert result["payment_id"] == payment_verification_data["payment_id"]
 
-@patch('app.payments.PaymentGateway', new=MockPaymentGateway)
+@patch('models.payments.PaymentGateway', new=MockPaymentGateway)
 def test_refund_payment():
     result = refund_payment(refund_data["payment_id"], refund_data["amount"])
     assert result["status"] == "success"

@@ -1,7 +1,6 @@
 import pytest
 from flask import Flask
-from app.forms import LoginForm, RegistrationForm, BookingForm, ReviewForm, AdminForm, MessagingForm
-from wtforms import ValidationError
+from forms import LoginForm, RegistrationForm, BookingForm, ReviewForm, AdminForm, MessagingForm
 
 @pytest.fixture
 def app():
@@ -12,7 +11,8 @@ def app():
 
 # Utility function for creating a form
 def create_form(form_class, **kwargs):
-    return form_class(**kwargs)
+    with app().test_request_context('/'):
+        return form_class(**kwargs)
 
 # Tests for LoginForm
 def test_login_form_valid_data(app):
@@ -56,7 +56,7 @@ def test_booking_form_missing_job_id(app):
 
 # Tests for ReviewForm
 def test_review_form_valid_data(app):
-    form =create_form(ReviewForm, reviewer_id=1, reviewee_id=2, rating=5, comment="Great job!")
+    form = create_form(ReviewForm, reviewer_id=1, reviewee_id=2, rating=5, comment="Great job!")
     assert form.validate() is True
 
 def test_review_form_missing_reviewer_id(app):

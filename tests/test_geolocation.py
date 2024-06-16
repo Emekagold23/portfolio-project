@@ -1,5 +1,5 @@
 import pytest
-from app.real_time_mapping import update_location, get_user_location, notify_nearby_users
+from models.geolocation import update_location, get_user_location, notify_nearby_users
 from unittest.mock import patch
 
 # Sample data for testing
@@ -25,7 +25,7 @@ def mock_get_location(user_id):
     return user_locations.get(user_id)
 
 # Tests for update_location function
-@patch('app.real_time_mapping.save_location', side_effect=mock_save_location)
+@patch('models.geolocation.save_location', side_effect=mock_save_location)
 def test_update_location(mock_save):
     user_id = user_location_data["user_id"]
     latitude = user_location_data["latitude"]
@@ -37,7 +37,7 @@ def test_update_location(mock_save):
     assert user_locations[user_id]["longitude"] == longitude
 
 # Tests for get_user_location function
-@patch('app.real_time_mapping.get_location', side_effect=mock_get_location)
+@patch('models.geolocation.get_location', side_effect=mock_get_location)
 def test_get_user_location(mock_get):
     user_id = user_location_data["user_id"]
     user_locations[user_id] = {"latitude": user_location_data["latitude"], "longitude": user_location_data["longitude"]}
@@ -53,8 +53,8 @@ def mock_notify(users, message):
     return True
 
 # Tests for notify_nearby_users function
-@patch('app.real_time_mapping.notify', side_effect=mock_notify)
-@patch('app.real_time_mapping.get_nearby_users', return_value=nearby_users_data)
+@patch('models.geolocation.notify', side_effect=mock_notify)
+@patch('models.geolocation.get_nearby_users', return_value=nearby_users_data)
 def test_notify_nearby_users(mock_nearby, mock_notify):
     user_id = user_location_data["user_id"]
     latitude = user_location_data["latitude"]

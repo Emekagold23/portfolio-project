@@ -1,5 +1,5 @@
 import pytest
-from app.notifications import send_notification
+from models.notification import send_notification
 from unittest.mock import patch, MagicMock
 
 # Mock Notification Service
@@ -8,7 +8,7 @@ class MockNotificationService:
         return {"status": "success", "message": "Notification sent successfully"}
 
 # Patch the notification service in the notifications module
-@patch('app.notifications.NotificationService', new=MockNotificationService)
+@patch('models.notification.NotificationService', new=MockNotificationService)
 def test_send_notification():
     result = send_notification(1, "Your booking has been confirmed.")
     assert result["status"] == "success"

@@ -1,6 +1,6 @@
 import pytest
-from app.admin import get_users, get_jobs
 from unittest.mock import patch, MagicMock
+from models.admin import get_users, get_jobs
 
 # Mock Admin Service
 class MockAdminService:
@@ -11,13 +11,13 @@ class MockAdminService:
         return {"status": "success", "jobs": [{"id": 1, "title": "Plumbing", "status": "pending"}]}
 
 # Patch the admin service in the admin module
-@patch('app.admin.AdminService', new=MockAdminService)
+@patch('app.models.admin.AdminService', new=MockAdminService)
 def test_get_users():
     result = get_users()
     assert result["status"] == "success"
     assert len(result["users"]) == 1
 
-@patch('app.admin.AdminService', new=MockAdminService)
+@patch('app.models.admin.AdminService', new=MockAdminService)
 def test_get_jobs():
     result = get_jobs()
     assert result["status"] == "success"

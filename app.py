@@ -2,18 +2,21 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from config import config
+import os
 
 # Initialize extensions
 db = SQLAlchemy()
 migrate = Migrate()
 login_manager = LoginManager()
 
-def create_app():
+def create_app(config_name=None):
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///workpal.db'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SECRET_KEY'] = 'your_secret_key'
 
+    # Set configuration
+    config_name = config_name or os.getenv('FLASK_CONFIG', 'default')
+    app.config.from_object(config[config_name])
+    
     # Initialize extensions
     db.init_app(app)
     migrate.init_app(app, db)
@@ -21,7 +24,7 @@ def create_app():
     
     login_manager.login_view = 'auth.login'
     login_manager.login_message_category = 'info'
-
+    
     # Register blueprints for HTML routes
     from routes.user_routes import user_routes
     from routes.booking_routes import booking_routes
@@ -67,6 +70,10 @@ def create_app():
     app.register_blueprint(search_bp, url_prefix='/api/search')
     app.register_blueprint(booking_bp, url_prefix='/api/bookings')
     app.register_blueprint(messaging_bp, url_prefix='/api/messaging')
+
+    # Register blueprint for authentication
+    from auth import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint, url_prefix='/auth')
 
     # Home route
     @app.route('/')
