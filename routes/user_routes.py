@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify, render_template, redirect, url_for, flash
 from werkzeug.security import generate_password_hash
-from app import db
+from models import db
 from models import User
 from flask_login import login_user, logout_user, login_required
 

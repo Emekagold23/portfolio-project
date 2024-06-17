@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
-from app import db, Admin
+from app import db
+from models.admin import Admin
 from flask_login import login_required, current_user
 
 admin_api = Blueprint('admin_api', __name__)

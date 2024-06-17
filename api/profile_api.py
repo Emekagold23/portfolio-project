@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
 from app.services.profile_service import ProfileService
-from utils.auth import token_required
+from utils.auth_utils import token_required
 
 profile_api = Blueprint('profile_api', __name__)
 

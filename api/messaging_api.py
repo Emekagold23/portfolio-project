@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from utils.auth import token_required
+from utils.auth_utils import token_required
 from services.messaging_service import MessagingService
 
 messaging_api = Blueprint('messaging_api', __name__)

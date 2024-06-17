@@ -3,6 +3,10 @@ from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextA
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from models import User
 from flask_login import current_user
+from flask_wtf import FlaskForm
+from wtforms import TextAreaField, DecimalField
+from markupsafe import Markup
+
 
 class RegistrationForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired(), Length(min=2, max=30)])
@@ -40,8 +44,9 @@ class JobForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(), Length(min=3, max=50)])
     description = TextAreaField('Description', validators=[DataRequired(), Length(min=10)])
     location = StringField('Location', validators=[DataRequired(), Length(min=3, max=100)])
-    budget = IntegerField('Budget', validators=[DataRequired()])
+    budget = DecimalField('Budget', validators=[DataRequired()])
     submit = SubmitField('Post Job')
+
 
 class ReviewForm(FlaskForm):
     rating = SelectField('Rating', choices=[
@@ -97,3 +102,7 @@ class ReportForm(FlaskForm):
 class SearchForm(FlaskForm):
     search_query = StringField('Search', validators=[DataRequired(), Length(min=3)])
     submit = SubmitField('Search')
+
+class LocationForm(FlaskForm):
+    location = StringField('Location', validators=[DataRequired()])
+    submit = SubmitField('Submit')

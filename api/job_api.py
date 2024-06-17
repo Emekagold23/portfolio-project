@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from werkzeug.exceptions import BadRequest, NotFound
-from utils.auth import token_required
+from utils.auth_utils import token_required
 from services.job_service import JobService
 
 job_api = Blueprint('job_api', __name__)

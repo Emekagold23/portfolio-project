@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
-from app import db
+from models import db
+from models import Profile
 
 profile_bp = Blueprint('profile', __name__)
 
@@ -10,31 +11,6 @@ def profile():
     if request.method == 'POST':
         current_user.first_name = request.form.get('first_name')
         current_user.last_name = request.form.get('last_name')
-        current_user.email = request.form.get('email')
-        
-        db.session.commit()
-        flash('Profile updated', 'success')
-    
-    return render_template('auth/profile.html', user=current_user)
-
-
-
-
-
-
-from flask import Blueprint, render_template, request, flash, redirect, url_for
-from flask_login import login_required, current_user
-from app import db
-from app.models import Profile
-
-profile_bp = Blueprint('profile', __name__)
-
-@profile_bp.route('/profile', methods=['GET', 'POST'])
-@login_required
-def profile():
-    if request.method == 'POST':
-        # Update user information
-        current_user.username = request.form.get('username')
         current_user.email = request.form.get('email')
         
         # Update profile information

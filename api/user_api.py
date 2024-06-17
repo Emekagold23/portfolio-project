@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from werkzeug.exceptions import NotFound, BadRequest
 from models import User
-from utils.auth import token_required
+from utils.auth_utils import token_required
 from services.user_service import UserService
 
 user_api = Blueprint('user_api', __name__)

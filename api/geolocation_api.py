@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from services.geolocation_service import GeolocationService
-from utils.auth import token_required
+from utils.auth_utils import token_required
 
 geolocation_api = Blueprint('geolocation_api', __name__)
 

@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from app import Report, db
+from models import Report, db
 
 report_routes = Blueprint('report_routes', __name__)
 

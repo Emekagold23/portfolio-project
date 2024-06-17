@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from utils.auth import token_required
+from utils.auth_utils import token_required
 from services.review_service import ReviewService
 
 review_api = Blueprint('review_api', __name__)

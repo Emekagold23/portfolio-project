@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from utils.auth import token_required
+from utils.auth_utils import token_required
 from services.booking_service import BookingService
 
 booking_api = Blueprint('booking_api', __name__)

@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from utils.auth import token_required
+from utils.auth_utils import token_required
 from services.notification_service import NotificationService
 
 notification_api = Blueprint('notification_api', __name__)

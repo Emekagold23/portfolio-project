@@ -22,58 +22,52 @@ def create_app(config_name=None):
     migrate.init_app(app, db)
     login_manager.init_app(app)
     
-    login_manager.login_view = 'auth.login'
+    login_manager.login_view = 'auth_bp.login'
     login_manager.login_message_category = 'info'
     
-    # Register blueprints for HTML routes
-    from routes.user_routes import user_routes
-    from routes.booking_routes import booking_routes
-    from routes.report_routes import report_routes
-    from routes.payment_routes import payment_routes
-    from routes.notification_routes import notification_routes
-    from routes.message_routes import message_routes
-    from routes.admin_routes import admin_routes
-    from routes.geolocation_routes import geolocation_routes
-    from routes.job_routes import job_routes
-    from routes.review_routes import review_routes
+    # Import blueprints
+    from routes import user_bp, job_bp, payment_bp, geolocation_bp, notification_bp, admin_bp, review_bp, search_bp, report_bp, error_bp
+    from api.auth_api import auth_bp as api_auth_bp
+    from api.job_api import job_api as api_job_bp
+    from api.payment_api import payment_api as api_payment_bp
+    from api.geolocation_api import geolocation_api as api_geolocation_bp
+    from api.notification_api import notification_api as api_notification_bp
+    from api.admin_api import admin_api as api_admin_bp
+    from api.review_api import review_api as api_review_bp
+    from api.search_api import search_api as api_search_bp
+    from api.booking_api import booking_api as api_booking_bp
+    from api.messaging_api import messaging_api as api_messaging_bp
 
-    app.register_blueprint(user_routes, url_prefix='/user')
-    app.register_blueprint(booking_routes, url_prefix='/bookings')
-    app.register_blueprint(report_routes, url_prefix='/reports')
-    app.register_blueprint(payment_routes, url_prefix='/payments')
-    app.register_blueprint(notification_routes, url_prefix='/notifications')
-    app.register_blueprint(message_routes, url_prefix='/messages')
-    app.register_blueprint(admin_routes, url_prefix='/admin')
-    app.register_blueprint(geolocation_routes, url_prefix='/geolocations')
-    app.register_blueprint(job_routes, url_prefix='/jobs')
-    app.register_blueprint(review_routes, url_prefix='/reviews')
+    # Register blueprints
+    app.register_blueprint(user_bp, url_prefix='/user')
+    app.register_blueprint(job_bp, url_prefix='/jobs')
+    app.register_blueprint(payment_bp, url_prefix='/payments')
+    app.register_blueprint(geolocation_bp, url_prefix='/geolocation')
+    app.register_blueprint(notification_bp, url_prefix='/notifications')
+    app.register_blueprint(admin_bp, url_prefix='/admin')
+    app.register_blueprint(review_bp, url_prefix='/reviews')
+    app.register_blueprint(search_bp, url_prefix='/search')
+    app.register_blueprint(report_bp, url_prefix='/reports')
+    app.register_blueprint(error_bp, url_prefix='/errors')
 
-    # Register blueprints for API routes
-    from api.auth_api import auth_bp
-    from api.job_api import job_bp
-    from api.payment_api import payment_bp
-    from api.geolocation_api import geolocation_bp
-    from api.notification_api import notification_bp
-    from api.admin_api import admin_bp
-    from api.review_api import review_bp
-    from api.search_api import search_bp
-    from api.booking_api import booking_bp
-    from api.messaging_api import messaging_bp
-
-    app.register_blueprint(auth_bp, url_prefix='/api/user')
-    app.register_blueprint(job_bp, url_prefix='/api/jobs')
-    app.register_blueprint(payment_bp, url_prefix='/api/payments')
-    app.register_blueprint(geolocation_bp, url_prefix='/api/geolocation')
-    app.register_blueprint(notification_bp, url_prefix='/api/notifications')
-    app.register_blueprint(admin_bp, url_prefix='/api/admin')
-    app.register_blueprint(review_bp, url_prefix='/api/reviews')
-    app.register_blueprint(search_bp, url_prefix='/api/search')
-    app.register_blueprint(booking_bp, url_prefix='/api/bookings')
-    app.register_blueprint(messaging_bp, url_prefix='/api/messaging')
+    app.register_blueprint(api_auth_bp, url_prefix='/api/user')
+    app.register_blueprint(api_job_bp, url_prefix='/api/jobs')
+    app.register_blueprint(api_payment_bp, url_prefix='/api/payments')
+    app.register_blueprint(api_geolocation_bp, url_prefix='/api/geolocation')
+    app.register_blueprint(api_notification_bp, url_prefix='/api/notifications')
+    app.register_blueprint(api_admin_bp, url_prefix='/api/admin')
+    app.register_blueprint(api_review_bp, url_prefix='/api/reviews')
+    app.register_blueprint(api_search_bp, url_prefix='/api/search')
+    app.register_blueprint(api_booking_bp, url_prefix='/api/bookings')
+    app.register_blueprint(api_messaging_bp, url_prefix='/api/messaging')
 
     # Register blueprint for authentication
-    from auth import auth as auth_blueprint
+    from utils.auth_utils import auth_bp as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
+
+    # Import models here to avoid circular import issues
+    with app.app_context():
+        from models import User, Admin
 
     # Home route
     @app.route('/')

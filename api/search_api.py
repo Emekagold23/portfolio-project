@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from utils.auth import token_required
+from utils.auth_utils import token_required
 from services.search_service import SearchService
 
 search_api = Blueprint('search_api', __name__)
