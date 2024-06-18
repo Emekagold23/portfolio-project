@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Workpal{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/user.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/booking.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/report.css') }}">
@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/job.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/review.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/error.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/client_profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/worker_profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/client_dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/worker_dashboard.css') }}">
     {% block extra_styles %}{% endblock %}
 </head>
 <body>
@@ -41,7 +45,7 @@
     <footer>
         <p>&copy; 2024 Your Company</p>
     </footer>
-    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/user.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/booking.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/report.js') }}"></script>
@@ -52,6 +56,10 @@
     <script src="{{ url_for('static', filename='scripts/geolocation.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/job.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/review.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/client_profile.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/worker_profile.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/client_dashboard.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/worker_dashboard.js') }}"></script>
     {% block extra_scripts %}{% endblock %}
 </body>
 </html>
