@@ -1,28 +1,31 @@
-/* Styles for Messaging pages */
-
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-ul {
+.message-list {
     list-style: none;
     padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-ul li {
-    background: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.message-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    margin: 0.5em 0;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-ul li a {
+.message-list a {
     text-decoration: none;
-    color: #007BFF;
+    color: #333;
+    font-weight: bold;
 }
 
-ul li a:hover {
+.message-list a:hover {
     text-decoration: underline;
+}
+
+.message-date {
+    font-size: 0.9em;
+    color: #777;
 }

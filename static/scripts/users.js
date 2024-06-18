@@ -31,55 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => response.json())
         .then(data => {
-            if (data.success) {
-                alert('Login successful');
-                window.location.href = '/profile';
-            } else {
-                alert('Failed to login');
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-});
-
-
-
-
-
-
-// JavaScript for User Authentication and Profile pages
-
-document.addEventListener('DOMContentLoaded', function () {
-    console.log('User script loaded');
-
-    // Handle form submission for login
-    const loginForm = document.getElementById('login-form');
-    if (loginForm) {
-        loginForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-            loginUser();
-        });
-    }
-
-    // Function to login a user
-    function loginUser() {
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-
-        if (!email || !password) {
-            alert('Please fill in all fields');
-            return;
-        }
-
-        const loginData = { email, password };
-
-        fetch('/api/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(loginData)
-        })
-        .then(response => response.json())
-        .then(data => {
             if (data.token) {
                 // Store token in local storage or cookie
                 localStorage.setItem('token', data.token);

@@ -16,59 +16,59 @@
 </section>
 
 <section class="about">
-    <h2>About Us</h2>
-    <p>Workpal is dedicated to providing the best service management solutions for individuals and businesses. Our platform streamlines your workflow, helping you manage tasks, bookings, and communications with ease. We are committed to delivering top-notch service and continuous improvement.</p>
+    <div class="container">
+        <h2>About Us</h2>
+        <p>Workpal is dedicated to providing the best service management solutions for individuals and businesses. Our platform streamlines your workflow, helping you manage tasks, bookings, and communications with ease. We are committed to delivering top-notch service and continuous improvement.</p>
+    </div>
 </section>
 
 <section class="features">
-    <h2>Features</h2>
-    <div class="feature-grid">
-        <div class="feature-item">
-            <img src="{{ url_for('static', filename='images/feature1.png') }}" alt="Feature 1">
-            <h3>Feature One</h3>
-            <p>Detailed description of the first feature, highlighting its benefits.</p>
-        </div>
-        <div class="feature-item">
-            <img src="{{ url_for('static', filename='images/feature2.png') }}" alt="Feature 2">
-            <h3>Feature Two</h3>
-            <p>Detailed description of the second feature, highlighting its benefits.</p>
-        </div>
-        <div class="feature-item">
-            <img src="{{ url_for('static', filename='images/feature3.png') }}" alt="Feature 3">
-            <h3>Feature Three</h3>
-            <p>Detailed description of the third feature, highlighting its benefits.</p>
+    <div class="container">
+        <h2>Features</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <img src="{{ url_for('static', filename='images/feature1.png') }}" alt="Feature 1">
+                <h3>Feature One</h3>
+                <p>Detailed description of the first feature, highlighting its benefits.</p>
+            </div>
+            <div class="feature-item">
+                <img src="{{ url_for('static', filename='images/feature2.png') }}" alt="Feature 2">
+                <h3>Feature Two</h3>
+                <p>Detailed description of the second feature, highlighting its benefits.</p>
+            </div>
+            <div class="feature-item">
+                <img src="{{ url_for('static', filename='images/feature3.png') }}" alt="Feature 3">
+                <h3>Feature Three</h3>
+                <p>Detailed description of the third feature, highlighting its benefits.</p>
+            </div>
         </div>
     </div>
 </section>
 
 <section class="testimonials">
-    <h2>What Our Users Say</h2>
-    <div class="testimonial-grid">
-        <div class="testimonial-item">
-            <p>"This app has transformed the way I manage my tasks. Highly recommended!"</p>
-            <p class="user-name">- John Doe</p>
-        </div>
-        <div class="testimonial-item">
-            <p>"A must-have for anyone looking to streamline their work processes."</p>
-            <p class="user-name">- Jane Smith</p>
+    <div class="container">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-item">
+                <p>"This app has transformed the way I manage my tasks. Highly recommended!"</p>
+                <p class="user-name">- John Doe</p>
+            </div>
+            <div class="testimonial-item">
+                <p>"A must-have for anyone looking to streamline their work processes."</p>
+                <p class="user-name">- Jane Smith</p>
+            </div>
         </div>
     </div>
 </section>
 
 <section class="cta">
-    <h2>Ready to Get Started?</h2>
-    <a href="{{ url_for('auth.register') }}" class="cta-button">Join Now</a>
+    <div class="container">
+        <h2>Ready to Get Started?</h2>
+        <a href="{{ url_for('auth.register') }}" class="cta-button">Join Now</a>
+    </div>
 </section>
 {% endblock %}
 
 {% block extra_scripts %}
 <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
 {% endblock %}
-
-
-
-
-
-
-
-

@@ -1,7 +1,8 @@
 {% extends "base.html" %}
-{% block title %}Signup as Worker{% endblock %}
+{% block title %}Signup as Client{% endblock %}
 {% block content %}
-    <h1>Signup as Worker</h1>
+<div class="container">
+    <h1>Signup as Client</h1>
     <form method="POST">
         <label for="first_name">First Name:</label>
         <input type="text" id="first_name" name="first_name" required>
@@ -11,9 +12,10 @@
         <input type="email" id="email" name="email" required>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
-        <label type="confirm_password">confirm password</label>
-        <input type="password" name="confirm_password" id="confirm_password" required>
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
         <button type="submit">Signup</button>
     </form>
     <p>Already have an account? <a href="/login">Login here</a></p>
+</div>
 {% endblock %}

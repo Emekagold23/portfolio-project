@@ -2,9 +2,13 @@
 {% block title %}Geolocations{% endblock %}
 {% block content %}
     <h1>Geolocations</h1>
-    <ul>
+    <ul class="geolocation-list">
         {% for geolocation in geolocations %}
-            <li><a href="{{ url_for('geolocation', geolocation_id=geolocation.id) }}">{{ geolocation.name }}</a></li>
+            <li>
+                <a href="{{ url_for('geolocation_details', geolocation_id=geolocation.id) }}">
+                    {{ geolocation.name }}
+                </a>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}

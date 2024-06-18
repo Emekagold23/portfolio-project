@@ -2,9 +2,13 @@
 {% block title %}Jobs{% endblock %}
 {% block content %}
     <h1>Jobs</h1>
-    <ul>
+    <ul class="job-list">
         {% for job in jobs %}
-            <li><a href="{{ url_for('job', job_id=job.id) }}">{{ job.title }}</a></li>
+            <li>
+                <a href="{{ url_for('job_details', job_id=job.id) }}">
+                    {{ job.title }}
+                </a>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}

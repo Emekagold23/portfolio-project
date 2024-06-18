@@ -2,9 +2,12 @@
 {% block title %}Notifications{% endblock %}
 {% block content %}
     <h1>Notifications</h1>
-    <ul>
+    <ul class="notification-list">
         {% for notification in notifications %}
-            <li>{{ notification.message }} - {{ notification.date }}</li>
+            <li>
+                <span class="notification-message">{{ notification.message }}</span>
+                <span class="notification-date">{{ notification.date }}</span>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}

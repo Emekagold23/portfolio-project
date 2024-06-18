@@ -1,45 +1,65 @@
-// JavaScript for Geolocation services
+document.addEventListener('DOMContentLoaded', function() {
+    // Form validation
+    const form = document.querySelector('form');
+    const nameInput = document.getElementById('name');
+    const descriptionInput = document.getElementById('description');
+    const latitudeInput = document.getElementById('latitude');
+    const longitudeInput = document.getElementById('longitude');
+    const errorMessages = {
+        name: 'Name is required',
+        description: 'Description is required',
+        latitude: 'Latitude must be a valid number between -90 and 90',
+        longitude: 'Longitude must be a valid number between -180 and 180',
+    };
 
-document.addEventListener('DOMContentLoaded', function () {
-    console.log('Geolocation script loaded');
+    form.addEventListener('submit', function(event) {
+        let valid = true;
+        const errors = [];
 
-    // Handle geolocation requests
-    const geolocationButton = document.getElementById('get-location');
-    if (geolocationButton) {
-        geolocationButton.addEventListener('click', function () {
-            getGeolocation();
-        });
-    }
+        if (!nameInput.value) {
+            valid = false;
+            errors.push(errorMessages.name);
+        }
 
-    // Function to get the user's geolocation
-    function getGeolocation() {
+        if (!descriptionInput.value) {
+            valid = false;
+            errors.push(errorMessages.description);
+        }
+
+        const latitude = parseFloat(latitudeInput.value);
+        if (isNaN(latitude) || latitude < -90 || latitude > 90) {
+            valid = false;
+            errors.push(errorMessages.latitude);
+        }
+
+        const longitude = parseFloat(longitudeInput.value);
+        if (isNaN(longitude) || longitude < -180 || longitude > 180) {
+            valid = false;
+            errors.push(errorMessages.longitude);
+        }
+
+        if (!valid) {
+            event.preventDefault();
+            alert(errors.join('\n'));
+        }
+    });
+
+    // Example interactive functionality (e.g., displaying current location)
+    const currentLocationBtn = document.createElement('button');
+    currentLocationBtn.textContent = 'Use Current Location';
+    form.appendChild(currentLocationBtn);
+
+    currentLocationBtn.addEventListener('click', function(event) {
+        event.preventDefault();
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition, showError);
+            navigator.geolocation.getCurrentPosition(function(position) {
+                latitudeInput.value = position.coords.latitude;
+                longitudeInput.value = position.coords.longitude;
+            }, function(error) {
+                alert('Error retrieving current location: ' + error.message);
+            });
         } else {
             alert('Geolocation is not supported by this browser.');
         }
-    }
-
-    function showPosition(position) {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-        alert(`Latitude: ${lat}, Longitude: ${lon}`);
-    }
-
-    function showError(error) {
-        switch (error.code) {
-            case error.PERMISSION_DENIED:
-                alert('User denied the request for Geolocation.');
-                break;
-            case error.POSITION_UNAVAILABLE:
-                alert('Location information is unavailable.');
-                break;
-            case error.TIMEOUT:
-                alert('The request to get user location timed out.');
-                break;
-            case error.UNKNOWN_ERROR:
-                alert('An unknown error occurred.');
-                break;
-        }
-    }
+    });
 });

@@ -2,9 +2,13 @@
 {% block title %}Reviews{% endblock %}
 {% block content %}
     <h1>Reviews</h1>
-    <ul>
+    <ul class="review-list">
         {% for review in reviews %}
-            <li><a href="{{ url_for('review', review_id=review.id) }}">{{ review.title }}</a></li>
+            <li>
+                <a href="{{ url_for('review_details', review_id=review.id) }}">
+                    {{ review.title }}
+                </a>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}

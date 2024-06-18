@@ -1,28 +1,61 @@
-/* Styles for Payment pages */
-
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+.create-payment form,
+.payment-details,
+.payments-list {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1em;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-ul {
+.create-payment form label,
+.payment-details p {
+    display: block;
+    margin: 0.5em 0 0.2em;
+    font-weight: bold;
+}
+
+.create-payment form input,
+.create-payment form textarea {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.create-payment form button {
+    display: block;
+    width: 100%;
+    padding: 0.7em;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.create-payment form button:hover {
+    background-color: #555;
+}
+
+.payments-list ul {
     list-style: none;
     padding: 0;
 }
 
-ul li {
-    background: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.payments-list ul li {
+    margin: 0.5em 0;
 }
 
-ul li a {
+.payments-list ul li a {
+    color: #333;
     text-decoration: none;
-    color: #007BFF;
+    font-weight: bold;
 }
 
-ul li a:hover {
+.payments-list ul li a:hover {
     text-decoration: underline;
 }

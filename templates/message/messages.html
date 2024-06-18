@@ -2,9 +2,12 @@
 {% block title %}Messages{% endblock %}
 {% block content %}
     <h1>Messages</h1>
-    <ul>
+    <ul class="message-list">
         {% for message in messages %}
-            <li><a href="{{ url_for('message', message_id=message.id) }}">{{ message.title }}</a></li>
+            <li>
+                <a href="{{ url_for('message', message_id=message.id) }}">{{ message.title }}</a>
+                <span class="message-date">{{ message.date }}</span>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}

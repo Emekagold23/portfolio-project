@@ -1,58 +1,30 @@
-// JavaScript for Payment pages
-
-document.addEventListener('DOMContentLoaded', function () {
-    console.log('Payment script loaded');
-
-    // Handle form submission for creating a new payment
-    const paymentForm = document.getElementById('create-payment-form');
+document.addEventListener('DOMContentLoaded', function() {
+    // Payment form validation
+    const paymentForm = document.querySelector('.create-payment form');
     if (paymentForm) {
-        paymentForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-            createPayment();
+        paymentForm.addEventListener('submit', function(event) {
+            const title = document.getElementById('title').value.trim();
+            const description = document.getElementById('description').value.trim();
+            const amount = document.getElementById('amount').value.trim();
+            const date = document.getElementById('date').value.trim();
+            
+            if (!title || !description || !amount || !date) {
+                event.preventDefault();
+                alert('Please fill in all required fields.');
+            }
         });
     }
 
-    // Function to create a new payment
-    function createPayment() {
-        const amount = document.getElementById('amount').value;
-        const method = document.getElementById('method').value;
-
-        if (!amount || !method) {
-            alert('Please fill in all fields');
-            return;
-        }
-
-        const paymentData = { amount, method };
-
-        fetch('/api/payments', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(paymentData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Payment created successfully');
-                window.location.href = '/payments';
-            } else {
-                alert('Failed to create payment');
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-
-    // Fetch and display payments
-    const paymentList = document.getElementById('payment-list');
-    if (paymentList) {
-        fetch('/api/payments')
-            .then(response => response.json())
-            .then(data => {
-                data.forEach(payment => {
-                    const li = document.createElement('li');
-                    li.textContent = `Amount: ${payment.amount}, Method: ${payment.method}`;
-                    paymentList.appendChild(li);
-                });
-            })
-            .catch(error => console.error('Error:', error));
+    // Payment list interactions
+    const paymentListItems = document.querySelectorAll('.payments-list ul li a');
+    if (paymentListItems) {
+        paymentListItems.forEach(function(item) {
+            item.addEventListener('click', function(event) {
+                const confirmation = confirm('Do you want to view the details of this payment?');
+                if (!confirmation) {
+                    event.preventDefault();
+                }
+            });
+        });
     }
 });
