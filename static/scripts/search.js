@@ -1,34 +1,34 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const searchForm = document.getElementById('search-form');
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('search-form');
     const resultsDiv = document.getElementById('results');
 
-    searchForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent default form submission
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        
         const skill = document.getElementById('skill').value;
-        searchWorkers(skill);
-    });
 
-    function searchWorkers(skill) {
-        fetch(`/search/results?skill=${encodeURIComponent(skill)}`)
-            .then(response => response.json())
-            .then(data => {
-                displayResults(data);
-            })
-            .catch(error => console.error('Error:', error));
-    }
+        try {
+            const response = await fetch(`/search-workers?skill=${encodeURIComponent(skill)}`);
 
-    function displayResults(data) {
-        resultsDiv.innerHTML = ''; // Clear previous results
-        if (data.error) {
-            resultsDiv.innerHTML = `<p>${data.error}</p>`;
-            return;
+            if (!response.ok) {
+                throw new Error('Search failed');
+            }
+
+            const results = await response.json();
+
+            // Clear previous results
+            resultsDiv.innerHTML = '';
+
+            // Display new results
+            results.forEach(result => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'result-item';
+                resultItem.textContent = `${result.firstName} ${result.lastName} - ${result.services}`;
+                resultsDiv.appendChild(resultItem);
+            });
+        } catch (error) {
+            console.error('Error searching workers:', error);
+            // Handle error (e.g., display error message)
         }
-        const ul = document.createElement('ul');
-        data.forEach(worker => {
-            const li = document.createElement('li');
-            li.textContent = `ID: ${worker.id}, Username: ${worker.username}, Email: ${worker.email}, Skills: ${worker.skills}`;
-            ul.appendChild(li);
-        });
-        resultsDiv.appendChild(ul);
-    }
+    });
 });

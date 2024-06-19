@@ -1,77 +1,89 @@
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    color: #333;
     margin: 0;
     padding: 0;
-}
-
-header {
-    background-color: #333;
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
-}
-
-nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
+    line-height: 1.6;
 }
 
 .hero {
-    background: url('/static/images/hero-bg.jpg') no-repeat center center/cover;
-    color: white;
+    background: url('../images/hero_background.jpg') no-repeat center center/cover;
+    color: #fff;
     padding: 100px 0;
     text-align: center;
 }
 
 .hero-content {
     max-width: 600px;
-    margin: 0 auto;
+    margin: auto;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 20px;
 }
 
 .cta-button {
-    background-color: #f8a02b;
-    border: none;
-    color: white;
-    display: inline-block;
-    margin-top: 20px;
+    background: #f4b400;
+    color: #fff;
     padding: 10px 20px;
     text-decoration: none;
+    border-radius: 5px;
 }
 
 .about, .features, .testimonials, .cta {
-    padding: 60px 0;
+    padding: 50px 0;
     text-align: center;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1100px;
+    margin: auto;
     padding: 0 20px;
 }
 
-.feature-grid, .testimonial-grid {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.feature-item, .testimonial-item {
-    flex: 1 1 calc(33.333% - 20px);
-    margin: 10px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.feature-item img, .testimonial-item img {
+.about-image {
+    margin-top: 20px;
     max-width: 100%;
     height: auto;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
+.feature-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.feature-item {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #f9f9f9;
+}
+
+.feature-item img {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+.testimonial-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.testimonial-item {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #f9f9f9;
+    max-width: 45%;
+}
+
+.user-name {
+    font-weight: bold;
+    margin-top: 10px;
 }

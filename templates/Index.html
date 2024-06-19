@@ -9,6 +9,7 @@
 {% block content %}
 <section class="hero">
     <div class="hero-content">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Workpal Logo" class="logo">
         <h1>Welcome to Workpal</h1>
         <p>Your gateway to seamless and efficient services.</p>
         <a href="{{ url_for('auth.register') }}" class="cta-button">Get Started</a>
@@ -19,6 +20,7 @@
     <div class="container">
         <h2>About Us</h2>
         <p>Workpal is dedicated to providing the best service management solutions for individuals and businesses. Our platform streamlines your workflow, helping you manage tasks, bookings, and communications with ease. We are committed to delivering top-notch service and continuous improvement.</p>
+        <img src="{{ url_for('static', filename='images/about_us.png') }}" alt="About Us" class="about-image">
     </div>
 </section>
 
@@ -28,18 +30,18 @@
         <div class="feature-grid">
             <div class="feature-item">
                 <img src="{{ url_for('static', filename='images/feature1.png') }}" alt="Feature 1">
-                <h3>Feature One</h3>
-                <p>Detailed description of the first feature, highlighting its benefits.</p>
+                <h3>Task Management</h3>
+                <p>Keep track of your tasks and manage your workflow efficiently.</p>
             </div>
             <div class="feature-item">
                 <img src="{{ url_for('static', filename='images/feature2.png') }}" alt="Feature 2">
-                <h3>Feature Two</h3>
-                <p>Detailed description of the second feature, highlighting its benefits.</p>
+                <h3>Easy Bookings</h3>
+                <p>Schedule and manage bookings seamlessly.</p>
             </div>
             <div class="feature-item">
                 <img src="{{ url_for('static', filename='images/feature3.png') }}" alt="Feature 3">
-                <h3>Feature Three</h3>
-                <p>Detailed description of the third feature, highlighting its benefits.</p>
+                <h3>Efficient Communication</h3>
+                <p>Stay connected with your clients and team through our messaging system.</p>
             </div>
         </div>
     </div>
@@ -51,11 +53,19 @@
         <div class="testimonial-grid">
             <div class="testimonial-item">
                 <p>"This app has transformed the way I manage my tasks. Highly recommended!"</p>
-                <p class="user-name">- John Doe</p>
+                <p class="user-name">- Iyke Henry</p>
             </div>
             <div class="testimonial-item">
                 <p>"A must-have for anyone looking to streamline their work processes."</p>
-                <p class="user-name">- Jane Smith</p>
+                <p class="user-name">- kemi johnson</p>
+            </div>
+            <div class="testimonial-item">
+                <p>"Workpal has greatly improved our team's productivity and efficiency."</p>
+                <p class="user-name">- Chinedu Golden</p>
+            </div>
+            <div class="testimonial-item">
+                <p>"The best tool I've found for managing my business needs."</p>
+                <p class="user-name">- Chiamaka Eze</p>
             </div>
         </div>
     </div>
