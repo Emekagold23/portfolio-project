@@ -1,0 +1,31 @@
+.message-list {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.message-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    margin: 0.5em 0;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.message-list a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.message-list a:hover {
+    text-decoration: underline;
+}
+
+.message-date {
+    font-size: 0.9em;
+    color: #777;
+}

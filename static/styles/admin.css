@@ -1,0 +1,44 @@
+.admin-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1em;
+}
+
+.admin-menu li {
+    background-color: #f5f5f5;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-menu li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.job-list, .report-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.job-list li, .report-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    margin: 0.5em 0;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.job-list li span, .report-list li span {
+    margin-right: 1em;
+}
+
+.job-list li form, .report-list li form {
+    margin: 0;
+}

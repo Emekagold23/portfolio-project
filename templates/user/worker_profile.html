@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Worker Profile - WorkPal{% endblock %}
+{% block content %}
+<div class="profile">
+    <h2>Worker Profile</h2>
+    <img src="{{ worker.picture_url }}" alt="Worker Picture" class="profile-picture">
+    <h3>Personal Information</h3>
+    <p><strong>First Name:</strong> {{ worker.first_name }}</p>
+    <p><strong>Last Name:</strong> {{ worker.last_name }}</p>
+    <p><strong>Email:</strong> {{ worker.email }}</p>
+    <h3>Services Offered</h3>
+    <ul>
+        {% for service in worker.services %}
+            <li>{{ service }}</li>
+        {% endfor %}
+    </ul>
+    <h3>Availability</h3>
+    <p>{{ worker.availability }}</p>
+    <button id="editProfileBtn" class="btn btn-secondary">Edit Profile</button>
+</div>
+
+<!-- Edit Profile Modal -->
+<div id="editProfileModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Edit Profile</h2>
+        <form id="editProfileForm">
+            <label for="edit_first_name">First Name:</label>
+            <input type="text" id="edit_first_name" name="edit_first_name" value="{{ worker.first_name }}">
+            <label for="edit_last_name">Last Name:</label>
+            <input type="text" id="edit_last_name" name="edit_last_name" value="{{ worker.last_name }}">
+            <label for="edit_email">Email:</label>
+            <input type="email" id="edit_email" name="edit_email" value="{{ worker.email }}">
+            <label for="edit_services">Services Offered:</label>
+            <textarea id="edit_services" name="edit_services">{{ worker.services|join(', ') }}</textarea>
+            <label for="edit_availability">Availability:</label>
+            <textarea id="edit_availability" name="edit_availability">{{ worker.availability }}</textarea>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

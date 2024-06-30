@@ -1,0 +1,56 @@
+.report-detail, .create-report, .reports {
+    background-color: white;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 2em 0;
+}
+
+.report-detail h1, .create-report h1, .reports h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.report-detail p, .create-report form label, .reports ul {
+    margin: 0.5em 0;
+}
+
+.create-report form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-report form input, .create-report form textarea, .create-report form button {
+    margin: 0.5em 0;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.create-report form button {
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
+.create-report form button:hover {
+    background-color: #555;
+}
+
+.reports ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.reports ul li {
+    margin: 0.5em 0;
+}
+
+.reports ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.reports ul li a:hover {
+    text-decoration: underline;
+}
