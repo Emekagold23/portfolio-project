@@ -1,114 +1,149 @@
-body {
-    font-family: 'Arial', sans-serif;
+/* Basic Reset */
+body, h1, h2, h3, p, ul, li, form, input, button {
     margin: 0;
     padding: 0;
-    color: #333;
-    background-color: #f5f5f5;
+    box-sizing: border-box;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.3s;
+body {
+    font-family: Arial, sans-serif;
 }
 
 /* Header Styles */
 header {
-    background-color: #333;
-    color: white;
-    padding: 1em 0;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 10px 20px;
+    background-color: white;
 }
 
-nav a {
+.header-left .logo {
+    max-height: 50px;
+}
+
+.hamburger {
+    display: none; /* Hide for simplicity; implement if needed */
+}
+
+nav.dropdown-menu {
+    display: flex;
+}
+
+.dropdown-item {
+    position: relative;
+    margin-right: 20px;
+    list-style: none; /* Removes bullet points */
+}
+
+.dropdown-item a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px; /* Add padding for better click area */
+    display: block; /* Ensure full clickable area */
+}
+
+/* Dropdown Menu Styles */
+.dropdown-item ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    margin: 0; /* Ensure no additional spacing */
+    width: 200px; /* Adjust width to accommodate longer text */
+}
+
+.dropdown-item:hover ul {
+    display: block;
+}
+
+.dropdown-item ul li {
+    padding: 8px 16px;
+}
+
+.dropdown-item ul li a {
+    color: #333;
+    display: block; /* Ensure full clickable area */
+    font-size: 14px; /* Reduce font size for submenu items */
+    white-space: nowrap; /* Prevent line breaks in text */
+}
+
+/* Highlight the submenu items on hover */
+.dropdown-item ul li a:hover {
+    background-color: orange; /* Highlight color */
+    color: white; /* Text color on hover */
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.cta-button {
+    background-color: #007BFF;
     color: white;
-    margin: 0 1em;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
 }
 
-nav a:hover {
-    text-decoration: underline;
-}
-
-/* Main Content Styles */
-main {
-    padding: 4em 2em 2em;
-    margin-top: 60px; 
-    min-height: calc(100vh - 140px); 
+.cta-button.cancel {
+    background-color: #6c757d;
 }
 
 /* Footer Styles */
 footer {
-    background-color: #333;
+    background-color: orange;
     color: white;
+    padding: 20px;
     text-align: center;
-    padding: 1em 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-column {
+    flex: 1;
+    padding: 0 10px;
+}
+
+/* Popup Styles */
+.popup {
+    display: none;
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    bottom: 0;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
 }
 
-/* Container for Responsive Layout */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1em;
-}
-
-/* Button Styles */
-.cta-button {
-    background-color: #f8a02b;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
-}
-
-.cta-button:hover {
-    background-color: #e69500;
-}
-
-/* Additional Utility Classes */
-.text-center {
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
     text-align: center;
 }
 
-.text-white {
-    color: white;
+.popup-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.bg-primary {
-    background-color: #333;
+.form-group {
+    display: flex;
+    flex-direction: column;
 }
 
-.bg-secondary {
-    background-color: #f8a02b;
-}
-
-.mt-1 {
-    margin-top: 1em;
-}
-
-.mt-2 {
-    margin-top: 2em;
-}
-
-.mb-1 {
-    margin-bottom: 1em;
-}
-
-.mb-2 {
-    margin-bottom: 2em;
+.popup-content button {
+    margin-top: 10px;
 }

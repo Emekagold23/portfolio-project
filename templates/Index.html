@@ -7,78 +7,116 @@
 {% endblock %}
 
 {% block content %}
-<section class="hero">
-    <div class="hero-content">
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Workpal Logo" class="logo">
-        <h1>Welcome to the home page</h1>
-        <p>Your gateway to seamless and efficient services.</p>
-        <a href="{{ url_for('auth.register') }}" class="cta-button">Get Started</a>
-    </div>
-</section>
+<div class="homepage-container">
 
-<section class="about">
-    <div class="container">
-        <h2>About Us</h2>
-        <p>Workpal is dedicated to providing the best service management solutions for individuals and businesses. Our platform streamlines your workflow, helping you manage tasks, bookings, and communications with ease. We are committed to delivering top-notch service and continuous improvement.</p>
-        <img src="{{ url_for('static', filename='images/about_us.png') }}" alt="About Us" class="about-image">
-    </div>
-</section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Workpal</h1>
+            <p>Connecting you with skilled professionals</p>
+            <button class="cta-button">Get Started</button>
+        </div>
+        <div class="hero-video">
+            <video autoplay muted loop playsinline>
+                <source src="{{ url_for('static', filename='videos/hero.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
 
-<section class="features">
-    <div class="container">
-        <h2>Features</h2>
-        <div class="feature-grid">
-            <div class="feature-item">
-                <img src="{{ url_for('static', filename='images/feature1.png') }}" alt="Feature 1">
-                <h3>Task Management</h3>
-                <p>Keep track of your tasks and manage your workflow efficiently.</p>
-            </div>
-            <div class="feature-item">
-                <img src="{{ url_for('static', filename='images/feature2.png') }}" alt="Feature 2">
-                <h3>Easy Bookings</h3>
-                <p>Schedule and manage bookings seamlessly.</p>
-            </div>
-            <div class="feature-item">
-                <img src="{{ url_for('static', filename='images/feature3.png') }}" alt="Feature 3">
-                <h3>Efficient Communication</h3>
-                <p>Stay connected with your clients and team through our messaging system.</p>
+    <!-- Feature Section -->
+    <section class="features">
+        <h2>Features and Benefits</h2>
+        <p>Explore Workpal’s key features:</p>
+        <div class="feature-item">
+            <img src="{{ url_for('static', filename='images/feature1.jpg') }}" alt="Feature 1">
+            <div>
+                <h3>Empowering Workers, Delighting Clients</h3>
+                <ul>
+                    <li><strong>For Workers:</strong> Flexible scheduling, quality tools, and easy management.</li>
+                    <li><strong>For Clients:</strong> Convenient booking, skilled professionals, and user-friendly platform.</li>
+                    <li><strong>Shared Benefits:</strong> Boosted productivity, better communication, seamless experience.</li>
+                </ul>
+                <p>Transform your work with [Workpal]. Try it now!</p>
             </div>
         </div>
-    </div>
-</section>
+        <div class="feature-item">
+            <img src="{{ url_for('static', filename='images/feature2.jpg') }}" alt="Feature 2">
+            <div>
+                <h3>Powering Productivity and Convenience</h3>
+                <ul>
+                    <li><strong>Worker Features:</strong> Manage profiles, browse jobs, track time, and process payments.</li>
+                    <li><strong>Client Features:</strong> Post jobs, select workers, manage projects, and leave reviews.</li>
+                    <li><strong>Shared Features:</strong> Real-time messaging, secure file sharing, customizable notifications.</li>
+                </ul>
+                <p>See how [Workpal] enhances productivity and convenience. Try it today!</p>
+            </div>
+        </div>
+    </section>
 
-<section class="testimonials">
-    <div class="container">
+    <!-- Testimonials Section -->
+    <section class="testimonials">
         <h2>What Our Users Say</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial-item">
-                <p>"This app has transformed the way I manage my tasks. Highly recommended!"</p>
-                <p class="user-name">- Iyke Henry</p>
-            </div>
-            <div class="testimonial-item">
-                <p>"A must-have for anyone looking to streamline their work processes."</p>
-                <p class="user-name">- kemi johnson</p>
-            </div>
-            <div class="testimonial-item">
-                <p>"Workpal has greatly improved our team's productivity and efficiency."</p>
-                <p class="user-name">- Chinedu Golden</p>
-            </div>
-            <div class="testimonial-item">
-                <p>"The best tool I've found for managing my business needs."</p>
-                <p class="user-name">- Chiamaka Eze</p>
+        <div class="testimonial">
+            <p>"Transformed my task management. Highly recommended!"</p>
+            <p class="user-name">- Iyke Henry</p>
+        </div>
+        <div class="testimonial">
+            <p>"A must-have for streamlining work processes."</p>
+            <p class="user-name">- Kemi Johnson</p>
+        </div>
+        <div class="testimonial">
+            <p>"Greatly improved our team's efficiency."</p>
+            <p class="user-name">- Chinedu Golden</p>
+        </div>
+        <div class="testimonial">
+            <p>"The best tool for managing business needs."</p>
+            <p class="user-name">- Chiamaka Eze</p>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="call-to-action">
+        <h2>Ready to Get Started?</h2>
+        <button class="cta-button" id="signup-btn">Sign Up Now</button>
+    </section>
+
+    <!-- How Our App Works Section -->
+    <section class="how-it-works">
+        <h2>How Workpal Works</h2>
+        <p>Effortlessly manage tasks and connect with professionals:</p>
+        <div class="how-it-works-item">
+            <video controls>
+                <source src="{{ url_for('static', filename='videos/how-it-works1.mp4') }}" type="video/mp4">
+            </video>
+            <div>
+                <h3>Step 1: Sign Up</h3>
+                <p>Create an account quickly.</p>
             </div>
         </div>
-    </div>
-</section>
+        <div class="how-it-works-item">
+            <video controls>
+                <source src="{{ url_for('static', filename='videos/how-it-works2.mp4') }}" type="video/mp4">
+            </video>
+            <div>
+                <h3>Step 2: Find a Professional</h3>
+                <p>Search and connect with the right professionals.</p>
+            </div>
+        </div>
+        <div class="how-it-works-item">
+            <video controls>
+                <source src="{{ url_for('static', filename='videos/how-it-works3.mp4') }}" type="video/mp4">
+            </video>
+            <div>
+                <h3>Step 3: Manage Your Project</h3>
+                <p>Track and manage projects easily.</p>
+            </div>
+        </div>
+    </section>
 
-<section class="cta">
-    <div class="container">
-        <h2>Ready to Get Started?</h2>
-        <a href="{{ url_for('auth.register') }}" class="cta-button">Join Now</a>
-    </div>
-</section>
-{% endblock %}
+</div>
 
 {% block extra_scripts %}
 <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
+{% endblock %}
 {% endblock %}

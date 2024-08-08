@@ -1,89 +1,411 @@
-body {
-    font-family: Arial, sans-serif;
-    color: #333;
+/* General Styles */
+body, html {
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    color: #333;
 }
 
-.hero {
-    background: url('../images/hero_background.jpg') no-repeat center center/cover;
-    color: #fff;
-    padding: 100px 0;
-    text-align: center;
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
 }
 
-.hero-content {
-    max-width: 600px;
+button {
+    cursor: pointer;
+}
+
+/* Auth Container */
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2em;
+    max-width: 400px;
     margin: auto;
 }
 
-.logo {
-    width: 150px;
-    margin-bottom: 20px;
+.auth-container section {
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+.auth-container h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 24px;
 }
 
 .cta-button {
-    background: #f4b400;
+    background-color: #f8a02b;
+    border: none;
     color: #fff;
     padding: 10px 20px;
     text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
     border-radius: 5px;
+    font-weight: bold;
 }
 
-.about, .features, .testimonials, .cta {
-    padding: 50px 0;
+.cta-button:hover {
+    background-color: #e69500;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: #ffffff3d;
+    padding: 2em;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 100%;
     text-align: center;
 }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 0 20px;
+.popup-content h2 {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.about-image {
-    margin-top: 20px;
-    max-width: 100%;
-    height: auto;
+.popup-content button {
+    margin: 1em;
 }
 
-.feature-grid {
+/* Dropdown Content */
+.dropdown-content {
+    display: none;
+    background-color: #ffffff00;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    border-radius: 5px;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 250px;
+    z-index: 1000;
+}
+
+.dropdown-content h2 {
+    margin-top: 0;
+}
+
+.dropdown-content p {
+    margin-bottom: 0;
+}
+
+/* Homepage Container */
+.homepage-container {
     display: flex;
-    gap: 20px;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 1em;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2em;
+    background-color: #f4f4f4;
+    border-radius: 15px;
+    width: 100%;
+    margin: 2em 0;
+    overflow: hidden; /* Add this line */
+}
+
+.hero-content {
+    max-width: 50%;
+    overflow: hidden; /* Add this line */
+}
+
+.hero h1 {
+    font-size: 48px;
+    color: #333;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #666;
+    margin-top: 0.5em;
+}
+
+.hero-video {
+    position: relative;
+    width: 50%;
+    height: 100%; /* Ensure the video covers the entire height of the container */
+    border-radius: 0 15px 15px 0;
+    overflow: hidden;
+    z-index: 0; /* Make sure video is behind text */
+}
+
+.hero-video::before {
+    content: '';
+    display: block;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.hero-video video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure video covers the area */
+    border-radius: inherit;
+}
+
+/* Features Section */
+.features {
+    padding: 2em 0;
+    text-align: center;
+    width: 100%;
+}
+
+.features h2 {
+    font-size: 36px;
+    color: #333;
+}
+
+.features p {
+    font-size: 18px;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 2em;
 }
 
 .feature-item {
-    flex: 1;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background: #f9f9f9;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2em;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
 }
 
 .feature-item img {
-    max-width: 100px;
-    margin-bottom: 10px;
-}
-
-.testimonial-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.testimonial-item {
-    flex: 1;
-    padding: 20px;
-    border: 1px solid #ddd;
+    max-width: 150px;
     border-radius: 10px;
-    background: #f9f9f9;
-    max-width: 45%;
+    margin-right: 2em;
+}
+
+.feature-item h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 0.5em;
+}
+
+.feature-item p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 0;
+}
+
+/* Testimonials Section */
+.testimonials {
+    background-color: #fafafa15;
+    padding: 2em 0;
+    text-align: center;
+    width: 100%;
+}
+
+.testimonials h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 1em;
+}
+
+.testimonial {
+    max-width: 600px;
+    margin: 1em auto;
+    padding: 1em;
+    background: #ffffff21;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.testimonial p {
+    font-size: 18px;
+    color: #666;
 }
 
 .user-name {
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 0.5em;
+}
+
+/* Call to Action Section */
+.call-to-action {
+    padding: 2em 0;
+    text-align: center;
+    width: 100%;
+}
+
+.call-to-action h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 1em;
+}
+
+.call-to-action button {
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    color: #fff;
+    background-color: #f8a02b;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.call-to-action button:hover {
+    background-color: #e69500;
+}
+
+/* How It Works Section */
+.how-it-works {
+    padding: 2em 0;
+    text-align: center;
+    width: 100%;
+}
+
+.how-it-works h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 1em;
+}
+
+.how-it-works p {
+    font-size: 18px;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 2em;
+}
+
+.how-it-works-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2em;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.how-it-works-item video {
+    max-width: 300px;
+    border-radius: 10px;
+    margin-right: 2em;
+}
+
+.how-it-works-item h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 0.5em;
+}
+
+.how-it-works-item p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Visual Breaks */
+.visual-break {
+    width: 100%;
+    height: 200px;
+    background: url('path/to/image.jpg') no-repeat center center;
+    background-size: cover;
+    margin: 2em 0;
+}
+
+.alt-background {
+    background-color: #f0f0f0;
+    padding: 2em 0;
+}
+
+/* Asymmetrical and Overlapping Elements */
+.asymmetrical {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2em 0;
+}
+
+.asymmetrical .image {
+    flex: 1;
+    max-width: 40%;
+}
+
+.asymmetrical .content {
+    flex: 2;
+    padding-left: 2em;
+}
+
+.overlap {
+    position: relative;
+    margin-top: -50px;
+}
+
+.overlap .content {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 1em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Grid or Masonry Layout for Features */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2em;
+    padding: 2em 0;
+}
+
+.features-grid .feature-item {
+    display: block;
+    text-align: center;
+}
+
+/* Section Separators */
+.section-separator {
+    width: 50px;
+    height: 4px;
+    background-color: #f8a02b;
+    margin: 2em auto;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .hero, .feature-item, .how-it-works-item, .asymmetrical {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content, .hero-video, .feature-item img, .how-it-works-item video {
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 1em;
+    }
+
+    .asymmetrical .image, .asymmetrical .content {
+        max-width: 100%;
+        padding-left: 0;
+    }
 }

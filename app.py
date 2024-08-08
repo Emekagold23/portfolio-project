@@ -86,6 +86,118 @@ def create_app(config_name=None):
         # Replace 1 with your dynamic booking ID
         booking_id = 1
         return render_template('index.html', booking_id=booking_id)
+    
+    @app.route('/worker-connection/find')
+    def worker_connection_find():
+        return render_template('worker_connection_find.html')
+
+    @app.route('/worker-connection/reviews')
+    def worker_reviews():
+        return render_template('worker_reviews.html')
+
+    @app.route('/worker-connection/profiles')
+    def worker_profiles():
+        return render_template('worker_profiles.html')
+
+    @app.route('/project-management/planning')
+    def project_planning():
+        return render_template('project_planning.html')
+
+    @app.route('/project-management/tools-resources')
+    def tools_resources():
+        return render_template('tools_resources.html')
+
+    @app.route('/project-management/tips')
+    def project_tips():
+        return render_template('project_tips.html')
+
+    @app.route('/diy-guidance/step-by-step-guides')
+    def step_by_step_guides():
+        return render_template('step_by_step_guides.html')
+
+    @app.route('/diy-guidance/videos')
+    def diy_videos():
+        return render_template('diy_videos.html')
+
+    @app.route('/diy-guidance/materials-tools')
+    def materials_tools():
+        return render_template('materials_tools.html')
+
+    @app.route('/safety-resources/tips')
+    def safety_tips():
+        return render_template('safety_tips.html')
+
+    @app.route('/safety-resources/emergency-contacts')
+    def emergency_contacts():
+        return render_template('emergency_contacts.html')
+    
+    @app.route('/safety-resources/safety_videos')
+    def safety_videos():
+        return render_template('safety_videos.html')
+
+    @app.route('/safety-resources/equipment')
+    def safety_equipment():
+        return render_template('safety_equipment.html')
+
+    @app.route('/home-maintenance/tips')
+    def maintenance_tips():
+        return render_template('maintenance_tips.html')
+
+    @app.route('/home-maintenance/seasonal-checklists')
+    def seasonal_checklists():
+        return render_template('seasonal_checklists.html')
+
+    @app.route('/home-maintenance/inspections')
+    def home_inspections():
+        return render_template('home_inspections.html')
+
+    @app.route('/repair-installation/guides')
+    def repair_guides():
+        return render_template('repair_guides.html')
+
+    @app.route('/repair-installation/tips')
+    def installation_tips():
+        return render_template('installation_tips.html')
+
+    @app.route('/repair-installation/professional-help')
+    def professional_help():
+        return render_template('professional_help.html')
+
+    @app.route('/consultation-services/book')
+    def book_consultation():
+        return render_template('book_consultation.html')
+
+    @app.route('/consultation-services/types')
+    def consultation_types():
+        return render_template('consultation_types.html')
+
+    @app.route('/consultation-services/profiles')
+    def expert_profiles():
+        return render_template('expert_profiles.html')
+
+    @app.route('/about-Us')
+    def about_us():
+        return render_template('About_us.html')
+
+    @app.route('/testimonials')
+    def testimonials():
+        return render_template('testimonials.html')
+
+    @app.route('/commnity_forums')
+    def community_forums():
+        return render_template('community_forums.html')
+    
+    @app.route('/services')
+    def services():
+        return render_template('services.html')
+
+    @app.route('/signup_worker')
+    def signup_worker():
+        return render_template('signup_worker.html')
+
+    @app.route('/signup_client')
+    def signup_client():
+        return render_template('signup_client.html')
 
     # Error handling routes
     @app.errorhandler(404)

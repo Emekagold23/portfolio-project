@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Signup as Worker - Workpal{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/signup_worker.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="signup-container">
+        <h1>Signup as a Worker</h1>
+        <form action="{{ url_for('signup_worker') }}" method="post" enctype="multipart/form-data">
+            <h2>Personal Information</h2>
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
+            
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <h2>Professional Information</h2>
+            <label for="job_title">Job Title:</label>
+            <select id="job_title" name="job_title" required>
+                <option value="Plumber">Plumber</option>
+                <option value="Electrician">Electrician</option>
+                <option value="Carpenter">Carpenter</option>
+                <option value="Painter">Painter</option>
+                <!-- Add more options as needed -->
+            </select>
+            
+            <label for="industry">Industry/Trade:</label>
+            <select id="industry" name="industry" required>
+                <option value="Construction">Construction</option>
+                <option value="Maintenance">Maintenance</option>
+                <option value="Repair">Repair</option>
+                <option value="Installation">Installation</option>
+                <!-- Add more options as needed -->
+            </select>
+            
+            <label for="experience">Years of Experience:</label>
+            <select id="experience" name="experience" required>
+                <option value="0-1">0-1</option>
+                <option value="2-5">2-5</option>
+                <option value="6-10">6-10</option>
+                <option value="10+">10+</option>
+            </select>
+            
+            <label for="certifications">Certifications/Licenses:</label>
+            <input type="text" id="certifications" name="certifications">
+            
+            <h2>Availability</h2>
+            <label for="availability_status">Availability Status:</label>
+            <select id="availability_status" name="availability_status" required>
+                <option value="Full-time">Full-time</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Freelance">Freelance</option>
+            </select>
+            
+            <label for="available_hours">Available Hours:</label>
+            <select id="available_hours" name="available_hours" required>
+                <option value="7am-7pm">7am-7pm</option>
+                <option value="7pm-7am">7pm-7am</option>
+                <option value="Weekends">Weekends</option>
+                <option value="Flexible">Flexible</option>
+            </select>
+            
+            <h2>Skills</h2>
+            <label for="skills">List your skills:</label>
+            <select id="skills" name="skills" multiple required>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Carpentry">Carpentry</option>
+                <option value="Painting">Painting</option>
+                <!-- Add more options as needed -->
+            </select>
+            
+            <h2>Photo</h2>
+            <label for="photo">Upload a profile photo (optional):</label>
+            <input type="file" id="photo" name="photo">
+            
+            <h2>Additional Information</h2>
+            <label for="additional_info">Briefly describe your work experience and qualifications:</label>
+            <textarea id="additional_info" name="additional_info" rows="4"></textarea>
+            
+            <h2>Account Information</h2>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+            
+            <h2>Terms and Conditions</h2>
+            <label>
+                <input type="checkbox" name="terms" required>
+                I agree to the terms and conditions
+            </label>
+            
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+{% endblock %}
